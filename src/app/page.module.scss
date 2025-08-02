@@ -1,32 +1,194 @@
-.main{
-  height: 100vh;
-
-  .mask, .body{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #afa18f;
-    font-size: 64px;
-    line-height: 66px;
-    cursor: default;
+// Base container
+.container {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  
+  .name {
+    position: fixed;
+    top: 40%;
+    left: 5%;
+    transform: translateY(-50%);
+    font-size: 6rem;
+    font-weight: 700;
+    color: #1a365d;
+    z-index: 3;
+    margin: 0;
+    pointer-events: auto;
+    line-height: 1;
+    text-transform: uppercase;
     
-    p{
-      width: 1000px;
-      padding:40px;
-    }
-    span{
-      color: #ec4e39;
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      left: 5%;
     }
   }
+}
 
-  .mask{
-    mask-image: url('../../public/mask.svg');
-    mask-repeat: no-repeat;
-    mask-size: 40px;
-    background: #ec4e39;
-    position: absolute;
-    color: black;
+// Scroll container
+.scrollContainer {
+  min-height: 200vh;
+  position: relative;
+}
+
+// Background (light blue)
+
+// Mask element
+.mask {
+  position: fixed;
+  width: 24%;
+  height: 44%;
+  left: 70%;
+  top: 26%;
+  background-color: white;
+  mask-image: url('/mask.svg');
+  mask-size: var(--mask-size);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  clip-path: polygon("100% 0%, 100% 100%, 0% 100%, 0% 0%");
+  z-index: 5; 
+
+}
+
+// Content styles
+.content {
+  position: relative;
+  z-index: 5; // Higher than mask
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120vh 2rem 5rem;
+  color: #333;
+  mix-blend-mode: multiply; // Helps with text readability over the mask
+  
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #1a365d;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+}
+
+// Grid layout for features
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+  
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    h3 {
+      color: #2c5282;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 1rem;
+      margin: 0;
+      color: #4a5568;
+    }
+  }
+}
+
+// Quote section
+.quote {
+  background: rgba(255, 255, 255, 0.9);
+  border-left: 4px solid #4299e1;
+  padding: 2rem;
+  margin: 4rem 0;
+  border-radius: 0 8px 8px 0;
+  
+  blockquote {
+    margin: 0;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #2d3748;
+    
+    footer {
+      margin-top: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      color: #4a5568;
+    }
+  }
+}
+
+// Gallery section
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 4rem 0;
+  
+  .galleryItem {
+    text-align: center;
+    
+    .galleryImage {
+      height: 200px;
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+    
+    span {
+      font-weight: 500;
+      color: #4a5568;
+    }
+  }
+}
+
+// Call to action
+.cta {
+  text-align: center;
+  margin: 5rem 0;
+  
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #2c5282;
+  }
+  
+  .ctaButton {
+    background: #4299e1;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    
+    &:hover {
+      background: #3182ce;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
   }
 }
