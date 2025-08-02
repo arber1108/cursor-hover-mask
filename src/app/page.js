@@ -89,6 +89,8 @@ export default function Home() {
   // Scale for the mask expansion
   const scale = useTransform(scrollYProgress, [0, 1], [1, 10]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 1]);
+  const zIndex = useTransform(scrollYProgress, [0, 0.5], [6, 5]);
+
   
   // Track scroll progress for mask expansion
   const [isExpanded, setIsExpanded] = useState(false);
@@ -137,6 +139,9 @@ export default function Home() {
           style={{ 
             scale,
             opacity,
+            zIndex,
+            '--mask-size': 'contain',
+            '--webkit-mask-size': 'contain'
           }}
         />
         
